@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<h1 ng-style="myObj">Welcome</h1>
+<span>Type colors here</span>
+<input type="text" ng-model="r" value="" id="red">
+<input type="text" ng-model="g" value="" id="green">
+<input type="text" ng-model="b" value="" id="blue">
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+//var r = $("#red").val();
+$scope.r = "60";
+$scope.g = "5";
+$scope.b = "100";
+//$scope.r = $("#red").val();
+  $scope.myObj = {
+    "color" : "white",
+    "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")",
+    "font-size" : "60px",
+    "padding" : "50px"
+  }
+$("#red").blur(function(){
+ $scope.r = $("#red").val();
+ $scope.g = $("#green").val();
+ $scope.b = $("#blue").val();
+ $scope.myObj = {
+    "color" : "white",
+    "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")",
+    "font-size" : "60px",
+    "padding" : "50px"
+  }
+});
+$("#green").blur(function(){
+ $scope.r = $("#red").val();
+ $scope.g = $("#green").val();
+ $scope.b = $("#blue").val();
+ $scope.myObj = {
+    "color" : "white",
+    "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")",
+    "font-size" : "60px",
+    "padding" : "50px"
+  }
+});
+$("#blue").blur(function(){
+ $scope.r = $("#red").val();
+ $scope.g = $("#green").val();
+ $scope.b = $("#blue").val();
+ $scope.myObj = {
+    "color" : "white",
+    "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")",
+    "font-size" : "60px",
+    "padding" : "50px"
+  }
+});
+
+});
+
+
+
+</script>
+
+</body>
+</html>
