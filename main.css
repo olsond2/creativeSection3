@@ -1,0 +1,26 @@
+#holder {
+  display: block;
+  align: center;
+}
+
+#divleft {
+  float: left;
+  padding-left: 3em;
+}
+
+#divmid {
+  display: inline-block;
+}
+
+#divright {
+  float: right;
+  padding-right: 5em;
+}
+
+td {
+  padding-bottom: 1em;
+}
+
+#redhint, #bluehint, #greenhint {
+  padding-left: 1em;
+}

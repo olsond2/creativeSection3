@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div class="jumbotron">
+  <div class="container">
+    <h1 align="center"><font color="steelblue">Color Matcher</font></h1>
+  </div>
+</div>
+<div class="container">
+  <h3>Welcome to the Color Matcher game!</h3>
+  <p>The color you are to match will be displayed on the right, and the color with your given rgb values will be displayed on the left.</br>
+    The correct rgb values will be multiples of 25 between 0 and 250 to make it easier.</p></br></br>
+<div id="holder" align="center">
+  <div id="divleft">
+    <form ng-submit="colorCheck()"></br>
+      <table>
+        <tr>
+          <td>Red: </td>
+          <td><input type="text" ng-model="r" value="" id="red"></td>
+          <td><p id="redhint">(Hint)</p></td>
+        </tr>
+        <tr>
+          <td>Green: &nbsp; </td>
+          <td><input type="text" ng-model="g" value="" id="green"></td>
+          <td><p id="greenhint">(Hint)</p></td>
+        </tr>
+        <tr>
+          <td>Blue: </td>
+          <td><input type="text" ng-model="b" value="" id="blue"></td>
+          <td><p id="bluehint">(Hint)</p></td>
+        </tr>
+      </table>
+      <input type="submit">
+    </form>
+  </div>
+  <div id="divmid">
+    <h4>Your color:</h4>
+    <div ng-style="myObj"></div>
+  </div>
+  <div id="divright">
+    <h4>Color to guess:</h4>
+    <div ng-style="goalBox"></div>
+  </div>
+</div>
+</br></br></br>
+<script>
+
+</script>
+
+</body>
+</html>
