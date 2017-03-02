@@ -24,3 +24,18 @@ td {
 #redhint, #bluehint, #greenhint {
   padding-left: 1em;
 }
+
+#winner {
+    display: none;
+    position: fixed;
+    top: 200px;
+    left: 400px;
+    border: 4px solid black;
+    border-radius: 50px;
+}
+#reloadButton {
+    display: none;
+    position:fixed;
+    left: 600px;
+    top: 410px;
+}

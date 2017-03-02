@@ -59,6 +59,45 @@ app.controller("myCtrl", function($scope) {
       $('#bluehint').text('Correct')
     }
   })
+  $scope.colorChanger = function() {
+      $scope.r = $("#red").val();
+    $scope.g = $("#green").val();
+    $scope.b = $("#blue").val();
+    $scope.myObj = {
+      "height" : "8em",
+      "width" : "14em",
+      "border" : "1px solid black",
+      "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")"
+    }
+    if($scope.r == tryR) {
+    var RedCorrect = true;
+    $("#red").css("background-color","#5DFC0A");
+  }
+  else {
+    $("#red").css("background-color","#FFF");
+    var RedCorrect = false;
+  }
+  if($scope.g == tryG) {
+    $("#green").css("background-color","#5DFC0A");
+    var GreenCorrect = true;
+  }
+  else {
+    $("#green").css("background-color","#FFF");
+    var GreenCorrect = false;
+  }
+  if($scope.b == tryB) {
+    $("#blue").css("background-color","#5DFC0A");
+    var BlueCorrect = true;
+  }
+  else {
+    $("#blue").css("background-color","#FFF");
+    var BlueCorrect = false;
+  }
+  if (RedCorrect && GreenCorrect && BlueCorrect) {
+      $("#winner").css("display","block");
+      $("#reloadButton").css("display","block");
+  }
+  }
 
   $("#red").keyup(function(){
     $('#redhint').text('(Hint)')
@@ -102,45 +141,5 @@ app.controller("myCtrl", function($scope) {
       "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")"
     }
   });
-  $scope.colorCheck = function() {
-    $('#redhint').text('(Hint)')
-    $('#greenhint').text('(Hint)')
-    $('#bluehint').text('(Hint)')
-    $scope.r = $("#red").val();
-    $scope.g = $("#green").val();
-    $scope.b = $("#blue").val();
-    $scope.myObj = {
-      "height" : "8em",
-      "width" : "14em",
-      "border" : "1px solid black",
-      "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")"
-  }
-  if($scope.r == tryR) {
-    var RedCorrect = true;
-    $("#red").css("background-color","#5DFC0A");
-  }
-  else {
-    $("#red").css("background-color","#FFF");
-    var RedCorrect = false;
-  }
-  if($scope.g == tryG) {
-    $("#green").css("background-color","#5DFC0A");
-    var GreenCorrect = true;
-  }
-  else {
-    $("#green").css("background-color","#FFF");
-    var GreenCorrect = false;
-  }
-  if($scope.b == tryB) {
-    $("#blue").css("background-color","#5DFC0A");
-    var BlueCorrect = true;
-  }
-  else {
-    $("#blue").css("background-color","#FFF");
-    var BlueCorrect = false;
-  }
-  if (RedCorrect && GreenCorrect && BlueCorrect) {
-    alert("you win!!!!");
-  }
-}
+    
 });
