@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -6,26 +6,54 @@
 <body ng-app="myApp" ng-controller="myCtrl">
 
 <h1 ng-style="myObj">Welcome</h1>
-<span>Type colors here</span>
+<div ng-style="goalBox">Sup</div>
+<span>Type colors here to match this box's color</span>
+<form ng-submit="colorCheck()">
+    Red:
 <input type="text" ng-model="r" value="" id="red">
+    Green:
 <input type="text" ng-model="g" value="" id="green">
+    Blue:
 <input type="text" ng-model="b" value="" id="blue">
-
+    <input type="submit">
+</form>
+<button id="Rhint">Red Hint</button>
+<button id="Ghint">Green Hint</button>
+<button id="Bhint">Blue Hint</button>
 <script>
 var app = angular.module("myApp", []);
 app.controller("myCtrl", function($scope) {
-//var r = $("#red").val();
+
 $scope.r = "60";
 $scope.g = "5";
 $scope.b = "100";
-//$scope.r = $("#red").val();
+
+    var tryR = Math.random() * 255;
+    var tryG = Math.random() * 255;
+    var tryB = Math.random() * 255;
+    $scope.goalBox = {
+        "height" : "40px",
+        "width" : "200px",
+        "background-color" : "rgb(" + Math.floor(tryR) + "," + Math.floor(tryG) + "," + Math.floor(tryB) + ")"
+    }
+    
+    $("#Rhint").click(function () {
+        alert(Math.floor(tryR));
+    });
+    $("#Ghint").click(function () {
+        alert(Math.floor(tryG));
+    });
+    $("#Bhint").click(function () {
+        alert(Math.floor(tryB));
+    });
+    
   $scope.myObj = {
     "color" : "white",
     "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")",
     "font-size" : "60px",
     "padding" : "50px"
   }
-$("#red").blur(function(){
+$("#red").keyup(function(){
  $scope.r = $("#red").val();
  $scope.g = $("#green").val();
  $scope.b = $("#blue").val();
@@ -36,7 +64,7 @@ $("#red").blur(function(){
     "padding" : "50px"
   }
 });
-$("#green").blur(function(){
+$("#green").keyup(function(){
  $scope.r = $("#red").val();
  $scope.g = $("#green").val();
  $scope.b = $("#blue").val();
@@ -47,7 +75,7 @@ $("#green").blur(function(){
     "padding" : "50px"
   }
 });
-$("#blue").blur(function(){
+$("#blue").keyup(function(){
  $scope.r = $("#red").val();
  $scope.g = $("#green").val();
  $scope.b = $("#blue").val();
@@ -58,9 +86,46 @@ $("#blue").blur(function(){
     "padding" : "50px"
   }
 });
+$scope.colorCheck = function() {
+    $scope.r = $("#red").val();
+ $scope.g = $("#green").val();
+ $scope.b = $("#blue").val();
+ $scope.myObj = {
+    "color" : "white",
+    "background-color" : "rgb("+ $scope.r +","+$scope.g+","+$scope.b+")",
+    "font-size" : "60px",
+    "padding" : "50px"
+  }
+ if($scope.r == Math.floor(tryR)) {
+     var RedCorrect = true;
+     $("#red").css("background-color","#5DFC0A");
+ }
+  else {
+      $("#red").css("background-color","#FFF");
+      var RedCorrect = false;
+  }
+    if($scope.g == Math.floor(tryG)) {
+     $("#green").css("background-color","#5DFC0A");
+     var GreenCorrect = true;
+ }
+else {
+    $("#green").css("background-color","#FFF");
+    var GreenCorrect = false;
+}
+    if($scope.b == Math.floor(tryB)) {
+     $("#blue").css("background-color","#5DFC0A");
+     var BlueCorrect = true;
+ }
+else {
+    $("#blue").css("background-color","#FFF");
+    var BlueCorrect = false;
+}
+    if (RedCorrect && GreenCorrect && BlueCorrect) {
+        alert("you win!!!!");
+    }
+}
 
 });
-
 
 
 </script>
